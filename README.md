@@ -8,9 +8,8 @@ Setup:
 sudo pip install MySQL-python<br>
 sudo pip install selenium<br>
 
-download and add 'chromedriver' to the correct path.
-
-Edit line 4 in findEBayData.py to designate the correct path to 'chromedriver'.<br>
+Download and add 'chromedriver' to the correct path. Edit line 4 in findEBayData.py to designate the correct path to 'chromedriver'.<br>
 ```
 first_window = webdriver.Chrome("/home/karlis/chromedriver")
 ```
+Set up a XAMPP mySQL server and a page to display the databese contents.
