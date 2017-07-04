@@ -10,7 +10,7 @@ sudo pip install selenium<br>
 
 download and add "chromedriver" to the correct path.
 
-line 4 in findEBayData.py
-'''
+line 4 in findEBayData.py<br>
+```
 first_window = webdriver.Chrome("/home/karlis/chromedriver")
-'''
+```
