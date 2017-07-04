@@ -8,9 +8,9 @@ Setup:
 sudo pip install MySQL-python<br>
 sudo pip install selenium<br>
 
-download and add "chromedriver" to the correct path.
+download and add 'chromedriver' to the correct path.
 
-line 4 in findEBayData.py<br>
+Edit line 4 in findEBayData.py to designate the correct path to 'chromedriver'.<br>
 ```
 first_window = webdriver.Chrome("/home/karlis/chromedriver")
 ```
