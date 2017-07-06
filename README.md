@@ -13,3 +13,7 @@ Download and add 'chromedriver' to the path you want. Edit line 4 in findEBayDat
 first_window = webdriver.Chrome("/home/carl/chromedriver")
 ```
 Set up a XAMPP mySQL server and a webpage to display the databese contents.
+
+For simple demo:
+
+Copy eBayLinks folder with *.php *. files
