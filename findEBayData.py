@@ -1,7 +1,8 @@
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
 import re
 
-first_window = webdriver.Chrome("/usr/lib/chromedriver")  # Search result window (main)
+first_window = webdriver.Chrome("/home/carl/chromedriver")  # Search result window (main)
 first_window.implicitly_wait(25)
 
 def loadEBayResults(printWhileRunning, url):
@@ -14,10 +15,11 @@ def loadEBayResults(printWhileRunning, url):
     resultsImageURLs = resultsPanel.find_elements_by_class_name('lvpicinner')
 
     itemIDs = []
-    titlesLC = []
+    titles = []
     pricesAsFloat = []
     URLs = []
     imageURLs = []
+
 
     for i in range(len(resultsTitles)):
         currentPrice = (resultsPricesContainerList[i]
@@ -36,7 +38,7 @@ def loadEBayResults(printWhileRunning, url):
         itemIDs.append(currentItemID)
 
         currentTitle = (resultsTitles[i].find_element_by_tag_name('a').get_attribute('title')[25:] + " ")
-        titlesLC.append(currentTitle)  # make everything lower case so its not case sensitive
+        titles.append(currentTitle)  # make everything lower case so its not case sensitive
 
         currentUrl = resultsTitles[i].find_element_by_tag_name('a').get_attribute('href')  # finds the url of the listing's title
         URLs.append(currentUrl)
@@ -51,9 +53,14 @@ def loadEBayResults(printWhileRunning, url):
             print(pricesAsFloat[i])
             print(currentImageURL)
 
-    nextPageUrl = first_window.find_element_by_id('Pagination').find_element_by_class_name('pagn-next').find_element_by_tag_name('a').get_attribute('href')
+        #nextPageUrl = url
+    try:
+        nextPageUrl = first_window.find_element_by_id('Pagination').find_element_by_class_name('pagn-next').find_element_by_tag_name('a').get_attribute('href')
+    except NoSuchElementException:
+        nextPageUrl = "NoNextPage!"
 
-    return itemIDs, titlesLC, pricesAsFloat, URLs, imageURLs, nextPageUrl
+
+    return itemIDs, titles, pricesAsFloat, URLs, imageURLs, nextPageUrl
 
 
 def mainSearchMethod(searchType, url, totalMatchesFound, printWhileRunning = False):
@@ -64,20 +71,20 @@ def mainSearchMethod(searchType, url, totalMatchesFound, printWhileRunning = Fal
     while nextPageUrl.find("http://") != -1 or nextPageUrl.find(
             "https://") != -1:  # Check if there is a 'https://' in the 'href' behind the 'next page arrow'
 
-        itemIDs, titlesLC, pricesAsFloat, listingUrls, imageURLs, nextPageUrl = loadEBayResults(printWhileRunning, nextPageUrl)
+        itemIDs, titles, pricesAsFloat, listingUrls, imageURLs, nextPageUrl = loadEBayResults(printWhileRunning, nextPageUrl)
         searchType.setResultsItemIDs(itemIDs)
         searchType.setTotalMatchesFound(totalMatchesFound)
-        searchType.setResultsTitles(titlesLC)
+        searchType.setResultsTitles(titles)
         searchType.setResultsPrices(pricesAsFloat)
         searchType.setResultsURLs(listingUrls)
         searchType.setResultsImageURLs(imageURLs)
         searchType.runSearch()  # Looks for the matching items as specified by 'this' object.
         totalMatchesFound = searchType.getTotalMatchesFound()
-        matchingLinks = searchType.getMatchingLaserLinks()
+        matchingLinks = searchType.getMatchingLinks()
 
         print("\n\n" + "Next Page URL: " + nextPageUrl)
         print("\n" + "Matches Found: " + str(totalMatchesFound))
-        print("\n" + "Matching Laser Links:")
+        print("\n" + "Matching Links:")
         for link in matchingLinks:
             print(link)
 

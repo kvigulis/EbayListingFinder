@@ -14,6 +14,8 @@ def mySQL_createDatabase():
     mySQLcursor.execute("USE eBayLinks")
     mySQLcursor.execute("CREATE TABLE laserLinks (time int(13), itemNr varchar(20),"
               " price float(10), title varchar(125), URL varchar(250), imageURL varchar(250))")
+    mySQLcursor.execute("CREATE TABLE Z97Links (time int(13), itemNr varchar(20),"
+                        " price float(10), title varchar(125), URL varchar(250), imageURL varchar(250))")
 
 def mySQL_databaseReset():
     mySQLcursor.execute("DROP DATABASE eBayLinks")
