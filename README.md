@@ -16,4 +16,4 @@ Set up a XAMPP mySQL server and a webpage to display the databese contents.
 
 For simple demo:
 
-Copy eBayLinks folder with *.php *. files
+Copy eBayLinks folder with *.php files to /opt/lampp/htdocs and run the webpage by pasting http://localhost/eBayLinks/test.php in a browser. 
