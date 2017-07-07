@@ -13,7 +13,7 @@ Download and add 'chromedriver' to the path you want. Edit line 4 in findEBayDat
 first_window = webdriver.Chrome("/home/carl/chromedriver")
 ```
 
-Also be sure to have Chrome browser installed: https://askubuntu.com/questions/510056/how-to-install-google-chrome<br>
+Also be sure to have Chrome browser installed on your server/system: https://askubuntu.com/questions/510056/how-to-install-google-chrome<br>
 
 Set up a XAMPP mySQL server and a webpage to display the databese contents.
 
