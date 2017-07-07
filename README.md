@@ -3,7 +3,7 @@ Used to make customized automatic search for very specific eBay listings.
 
 Saves the found listing in a mySQL database called "eBayLinks"
 
-Setup:
+Setup:<br>
 sudo apt-get install libmysqlclient-dev // (if not already done)<br>
 sudo pip install MySQL-python<br>
 sudo pip install selenium<br>
