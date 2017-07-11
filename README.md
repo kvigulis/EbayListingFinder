@@ -19,7 +19,7 @@ Set up a XAMPP mySQL server and a webpage to display the databese contents.
 
 For a simple demo:
 
-Copy eBayLinks folder with *.php files to path '/opt/lampp/htdocs' if you are on Linux and run the webpage by pasting http://localhost/eBayLinks/test.php in a browser. 
+Copy eBayLinks folder with *.php files to path '/opt/lampp/htdocs' if you are on Linux and run the webpage by pasting http://localhost/eBayLinks/GPUs.php in a browser. 
 
 
 
