@@ -5,7 +5,7 @@ Saves the found listing in a mySQL database called "eBayLinks"
 
 Setup:<br>
 sudo apt-get install libmysqlclient-dev // (if not already done)<br>
-sudo pip install MySQL-python<br>
+sudo pip install MySQL-python (or pip install mysqlclient)<br>
 sudo pip install selenium<br>
 
 Download and add 'chromedriver' to the path you want. Edit line 4 in findEBayData.py to designate the correct path to 'chromedriver'. <br>
